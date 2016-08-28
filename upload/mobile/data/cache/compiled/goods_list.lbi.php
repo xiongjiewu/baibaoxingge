@@ -74,7 +74,6 @@ if ($this->_foreach['goods_list']['total'] > 0):
 </div>
 <?php echo $this->fetch('library/page.lbi'); ?>
 <?php endif; ?>
-<footer class="logo"><a href="http://www.ectouch.cn" title="ECTouch官网" target="_blank"><img src="__TPL__/images/copyright.png" width="176" height="60"></a></footer>
 
 <form class="hold-height" method="post" id="form" action="<?php echo url('category/index');?>">
   <div id="goFilter">

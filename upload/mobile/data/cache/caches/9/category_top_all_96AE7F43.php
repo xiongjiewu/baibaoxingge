@@ -1,4 +1,4 @@
-<?php exit;?>a:3:{s:8:"template";a:4:{i:0;s:97:"/Users/jie/projects/code/workplace/baibaoxingge/upload/mobile/themes/default/category_top_all.dwt";i:1;s:100:"/Users/jie/projects/code/workplace/baibaoxingge/upload/mobile/themes/default/library/page_header.lbi";i:2;s:95:"/Users/jie/projects/code/workplace/baibaoxingge/upload/mobile/themes/default/library/search.lbi";i:3;s:100:"/Users/jie/projects/code/workplace/baibaoxingge/upload/mobile/themes/default/library/page_footer.lbi";}s:7:"expires";i:1472412137;s:8:"maketime";i:1472408537;}<!DOCTYPE html>
+<?php exit;?>a:3:{s:8:"template";a:4:{i:0;s:97:"/Users/jie/projects/code/workplace/baibaoxingge/upload/mobile/themes/default/category_top_all.dwt";i:1;s:100:"/Users/jie/projects/code/workplace/baibaoxingge/upload/mobile/themes/default/library/page_header.lbi";i:2;s:95:"/Users/jie/projects/code/workplace/baibaoxingge/upload/mobile/themes/default/library/search.lbi";i:3;s:100:"/Users/jie/projects/code/workplace/baibaoxingge/upload/mobile/themes/default/library/page_footer.lbi";}s:7:"expires";i:1472414038;s:8:"maketime";i:1472410438;}<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">

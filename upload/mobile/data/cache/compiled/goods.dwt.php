@@ -137,7 +137,6 @@ if ($this->_foreach['spec']['total'] > 0):
     <div><a type="botton" class="btn btn-info ect-btn-info ect-colorf ect-bg" href="javascript:addToCart_quick(<?php echo $this->_var['goods']['goods_id']; ?>,0,'<?php echo url('flow/consignee',array('direct_shopping'=>1));?>')"><?php echo $this->_var['lang']['buy_now']; ?></a></div>
     </div>
   </div>
-  <footer class="logo"><a href="http://www.ectouch.cn" title="ECTouch官网" target="_blank"><img src="__TPL__/images/copyright.png" width="176" height="60"></a></footer>
 </div>
 <?php echo $this->fetch('library/search.lbi'); ?> <?php echo $this->fetch('library/page_footer.lbi'); ?>
 <script type="text/javascript" src="__TPL__/js/lefttime.js"></script>
