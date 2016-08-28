@@ -41,7 +41,7 @@ class GoodsController extends CommonController {
                 $goods ['goods_brand_url'] = url('brand/index', array('id' => $goods ['brand_id']));
             }
             $shop_price = $goods ['shop_price'];
-            $linked_goods = model('Goods')->get_related_goods($this->goods_id); 
+            $linked_goods = model('Goods')->get_related_goods($this->goods_id);
             $goods ['goods_style_name'] = add_style($goods ['goods_name'], $goods ['goods_name_style']);
 
             // 购买该商品可以得到多少钱的红包
@@ -56,6 +56,7 @@ class GoodsController extends CommonController {
                 }
             }
             $comments = model('Comment')->get_comment_info($this->goods_id,0);
+            $goods['last_update'] = date('Y-m-d H:i:s', $goods['last_update']);
             $this->assign('goods', $goods);
             $this->assign('comments', $comments);
             $this->assign('goods_id', $goods ['goods_id']);
@@ -112,7 +113,7 @@ class GoodsController extends CommonController {
         // 更新点击次数
         $data = 'click_count = click_count + 1';
         $this->model->table('goods')->data($data)->where('goods_id = ' . $this->goods_id)->update();
-           
+
         // 当前系统时间
         $this->assign('now_time', gmtime());
         $this->assign('sales_count', model('GoodsBase')->get_sales_count($this->goods_id));
@@ -135,7 +136,7 @@ class GoodsController extends CommonController {
     }
 
     /**
-     * 商品信息 
+     * 商品信息
      */
     public function info() {
         /* 获得商品的信息 */

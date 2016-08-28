@@ -9,7 +9,7 @@ function get_asynclist(url, src) {
     });
 }
 /* *
- * 添加商品到购物车 
+ * 添加商品到购物车
  */
 function addToCart(goodsId, parentId) {
     var goods = new Object();
@@ -19,7 +19,7 @@ function addToCart(goodsId, parentId) {
     var formBuy = document.forms['ECS_FORMBUY'];
     var quick = 0;
 
-    // 检查是否有商品规格 
+    // 检查是否有商品规格
     if (formBuy) {
         str = getSelectedAttributes(formBuy);
         spec_arr = str.split(',');
@@ -983,7 +983,7 @@ function cancel_div() {
 }
 
 /* *
- * 添加商品到购物车 
+ * 添加商品到购物车
  */
 function addToCart_quick(goodsId, parentId) {
     var goods = new Object();
@@ -993,7 +993,7 @@ function addToCart_quick(goodsId, parentId) {
     var formBuy = document.forms['ECS_FORMBUY'];
     var quick = 0;
 
-    // 检查是否有商品规格 
+    // 检查是否有商品规格
     if (formBuy) {
         str = getSelectedAttributes(formBuy);
         spec_arr = str.split(',');
@@ -1033,7 +1033,7 @@ function addToCartResponse_quick(result) {
         	}else{
         		alert(result.message);
         	}
-			
+
         }
         // 没选规格，弹出属性选择框
         else if (result.error == 6) {

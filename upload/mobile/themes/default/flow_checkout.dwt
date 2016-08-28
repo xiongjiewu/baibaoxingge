@@ -17,8 +17,8 @@
           </label>
         </section>
       </a>
-      <section class="ect-margin-tb ect-padding-lr checkout-select" id="accordion"> 
-        <!--{if $total.real_goods_count neq 0}--> 
+      <section class="ect-margin-tb ect-padding-lr checkout-select" id="accordion" style="display:none">
+        <!--{if $total.real_goods_count neq 0}-->
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
         <p><b>{$lang.shipping_method}</b><span class="label ect-bg-colory">{$lang.require_field}</span></p>
         <i class="fa fa-angle-down"></i></a>
@@ -26,7 +26,7 @@
           <ul class="ect-radio">
             <!-- {foreach from=$shipping_list item=shipping} 循环配送方式 -->
             <li>
-              <input name="shipping" type="radio" id="shipping_{$shipping.shipping_id}" value="{$shipping.shipping_id}"  {if $order.shipping_id eq $shipping.shipping_id}checked="true"{/if} supportCod="{$shipping.support_cod}" insure="{$shipping.insure}" onclick="selectShipping(this)">
+              <input checked name="shipping" type="radio" id="shipping_{$shipping.shipping_id}" value="{$shipping.shipping_id}"  {if $order.shipping_id eq $shipping.shipping_id}checked="true"{/if} supportCod="{$shipping.support_cod}" insure="{$shipping.insure}" onclick="selectShipping(this)">
               <label for="shipping_{$shipping.shipping_id}">{$shipping.shipping_name} [{$shipping.format_shipping_fee}]<i></i></label>
             </li>
             <!-- {/foreach} 循环配送方式 -->
@@ -34,8 +34,8 @@
         </div>
         <!--{else}-->
         <input name="shipping"  type="radio" value = "-1" checked="checked" style="display:none" />
-        <!--{/if}--> 
-        <!--{if $is_exchange_goods neq 1 || $total.real_goods_count neq 0}--> 
+        <!--{/if}-->
+        <!--{if $is_exchange_goods neq 1 || $total.real_goods_count neq 0}-->
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
         <p><b>{$lang.payment_method}</b><span class="label ect-bg-colory">{$lang.require_field}</span></p>
         <i class="fa fa-angle-down"></i></a>
@@ -43,7 +43,7 @@
           <ul class="ect-radio">
             <!-- {foreach from=$payment_list item=payment} -->
             <li>
-              <input name="payment" type="radio" id="payment_{$payment.pay_id}" value="{$payment.pay_id}" {if $order.pay_id eq $payment.pay_id}checked{/if} isCod="{$payment.is_cod}" onclick="selectPayment(this)" {if $cod_disabled and $payment.is_cod eq "1"}disabled="true"{/if} style="vertical-align:middle">
+              <input name="payment" type="radio" id="payment_{$payment.pay_id}" value="{$payment.pay_id}" {if $order.pay_id eq $payment.pay_id}checked{/if} isCod="{$payment.is_cod}" onclick="selectPayment(this)" {if $cod_disabled and $payment.is_cod eq "1"}disabled="true"{/if} style="vertical-align:middle" checked>
               <label for="payment_{$payment.pay_id}">{$payment.pay_name} [{$payment.format_pay_fee}]<i></i></label>
             </li>
             <!-- {/foreach} -->
@@ -51,25 +51,25 @@
         </div>
         <!--{else}-->
         <input name = "payment" type="radio" value = "-1" checked="checked"  style="display:none"/>
-        <!--{/if}--> 
-        <!-- {if $inv_content_list} 能否开发票 --> 
+        <!--{/if}-->
+        <!-- {if $inv_content_list} 能否开发票 -->
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo1">
         <p><b>{$lang.invoice}</b></p>
         <i class="fa fa-angle-down"></i></a>
         <div id="collapseTwo1" class="panel-collapse collapse in" style="overflow:hidden;">
-          <li class="b_no"> 
+          <li class="b_no">
           <span class="modRadio fr"> <i class="fl"></i> <ins>{$lang.no}</ins> </span>
 		  <input name="need_inv" type="checkbox"  class="input" id="ECS_NEEDINV" onclick="changeNeedInv()" value="1"  {if $order.need_inv}checked="true"{/if} style="display:none"/>
-        
+
         </li>
-          <li> 
-            <!-- {if $inv_type_list} --> 
+          <li>
+            <!-- {if $inv_type_list} -->
             <span class="pull-left select-span">{$lang.invoice_type}</span>
             <div class="form-select pull-left"> <i class="fa fa-sort"></i>
               <select name="inv_type" id="ECS_INVTYPE"  onchange="changeNeedInv()" style="border:1px solid #ccc;">
-                
+
          	{html_options options=$inv_type_list selected=$order.inv_type}
-          
+
               </select>
             </div>
           </li>
@@ -80,21 +80,21 @@
           <li> <span class="pull-left select-span">{$lang.invoice_content}</span>
             <div class="form-select pull-left"> <i class="fa fa-sort"></i>
               <select name="inv_type" id="ECS_INVCONTENT"  onchange="changeNeedInv()" style="border:1px solid #ccc;">
-                
-            
+
+
            	 {html_options values=$inv_content_list output=$inv_content_list selected=$order.inv_content}
-          
-          
+
+
               </select>
             </div>
           </li>
         </div>
-        <!--{/if}--> 
-        
+        <!--{/if}-->
+
       </section>
       <!-- {if $pack_list || $card_list} 是否有包装 或贺卡 -->
-      <section class="ect-margin-tb ect-padding-lr checkout-select"> 
-        <!-- {if $pack_list} 是否有包装 --> 
+      <section class="ect-margin-tb ect-padding-lr checkout-select" style="display:none">
+        <!-- {if $pack_list} 是否有包装 -->
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
         <p><b>{$lang.goods_package}</b></p>
         <i class="fa fa-angle-down"></i></a>
@@ -112,8 +112,8 @@
             <!-- {/foreach} 循环包装 -->
           </ul>
         </div>
-        <!-- {/if} 是否使用包装 --> 
-        <!-- {if $card_list} 是否有贺卡 --> 
+        <!-- {/if} 是否使用包装 -->
+        <!-- {if $card_list} 是否有贺卡 -->
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
         <p><b>{$lang.goods_card}</b></p>
         <i class="fa fa-angle-down"></i></a>
@@ -133,10 +133,10 @@
           <input name="" type="text" placeholder="{$lang.bless_note}">
         </div>
       </section>
-      <!-- {/if} 是否使用贺卡 --> 
+      <!-- {/if} 是否使用贺卡 -->
       <!-- {/if} 是否有包装 或贺卡 -->
-      
-      <section class="ect-margin-tb ect-padding-lr checkout-select"> 
+
+      <section class="ect-margin-tb ect-padding-lr checkout-select" style="display:none">
 	  <!-- {if $allow_use_bonus and $bonus_list} 是否使用红包 -->
 	 	<a data-toggle="collapse" data-parent="#accordion" href="#collapseBonus">
         <p><b>{$lang.use_bonus}</b></p>
@@ -156,7 +156,7 @@
           </ul>
         </div>
         <!-- {/if} 是否使用红包 -->
-        <!-- {if $allow_use_surplus} 是否使用余额 --> 
+        <!-- {if $allow_use_surplus} 是否使用余额 -->
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour1">
         <p><b> {$lang.use_surplus} </b></p>
         <i class="fa fa-angle-down"></i> </a>
@@ -164,9 +164,9 @@
           <span id="ECS_SURPLUS_NOTICE"></span>
           <input name="surplus" type="text" id="ECS_SURPLUS" size="10" value="{$order.surplus|default:0}" onblur="changeSurplus(this.value)" {if $disable_surplus}disabled="disabled"{/if} />
         </div>
-        <!-- {/if} 是否使用余额 --> 
-        
-        <!-- {if $allow_use_integral} 是否使用积分 --> 
+        <!-- {/if} 是否使用余额 -->
+
+        <!-- {if $allow_use_integral} 是否使用积分 -->
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive1">
         <p><b> {$lang.use_integral} </b></p>
         <i class="fa fa-angle-down"></i> </a>
@@ -174,8 +174,8 @@
           <span id="ECS_INTEGRAL_NOTICE" class="notice"></span>
           <input name="integral" type="text" class="input" id="ECS_INTEGRAL" onblur="changeIntegral(this.value)" value="{$order.integral|default:0}" size="10" />
         </div>
-        <!-- {/if} 是否使用积分 --> 
-        
+        <!-- {/if} 是否使用积分 -->
+
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
         <p><b> {$lang.order_postscript} </b></p>
         <i class="fa fa-angle-down"></i> </a>
@@ -183,24 +183,24 @@
           <input name="postscript" type="text" class="fuyan" placeholder="{$lang.please_order_postscript}">
         </div>
       </section>
-      <section class="ect-margin-tb ect-margin-bottom0 ect-padding-lr checkout-select checkout-pro-list">
+      <section class="ect-margin-tb ect-margin-bottom0 ect-padding-lr checkout-select checkout-pro-list" style="display:none">
         <p><b>{$lang.goods_list}</b><span class="label ect-bg-colory"><!--{if $allow_edit_cart} --><a href="{:url('flow/index')}" class="ect-colorf">{$lang.modify}</a><!--{/if} --></span></p>
         <ul>
           <!-- {foreach from=$goods_list item=goods} -->
           <li>
             <dl>
-              <dt class="pull-left"> 
-                <!-- {if $goods.goods_id gt 0 && $goods.extension_code eq 'package_buy'} --> 
-                <a href="javascript:void(0)" onClick="setSuitShow({$goods.goods_id})" >{$goods.goods_name}<span style="color:#FF0000;">（{$lang.remark_package}）</span></a> 
-                <!-- { else } --> 
-                <a href="{:url('goods/index',array('id'=>$this->_var['goods']['goods_id']))}" target="_blank" >{$goods.goods_name}</a> 
-                <!-- {if $goods.parent_id > 0} --> 
-                <span style="color:#FF0000">（{$lang.accessories}）</span> 
-                <!-- {elseif $goods.is_gift} --> 
-                <span style="color:#FF0000">（{$lang.largess}）</span> 
-                <!-- {/if} --> 
-                <!-- {/if} --> 
-                <!-- {if $goods.is_shipping} -->(<span style="color:#FF0000">{$lang.free_goods}</span>)<!-- {/if} --> 
+              <dt class="pull-left">
+                <!-- {if $goods.goods_id gt 0 && $goods.extension_code eq 'package_buy'} -->
+                <a href="javascript:void(0)" onClick="setSuitShow({$goods.goods_id})" >{$goods.goods_name}<span style="color:#FF0000;">（{$lang.remark_package}）</span></a>
+                <!-- { else } -->
+                <a href="{:url('goods/index',array('id'=>$this->_var['goods']['goods_id']))}" target="_blank" >{$goods.goods_name}</a>
+                <!-- {if $goods.parent_id > 0} -->
+                <span style="color:#FF0000">（{$lang.accessories}）</span>
+                <!-- {elseif $goods.is_gift} -->
+                <span style="color:#FF0000">（{$lang.largess}）</span>
+                <!-- {/if} -->
+                <!-- {/if} -->
+                <!-- {if $goods.is_shipping} -->(<span style="color:#FF0000">{$lang.free_goods}</span>)<!-- {/if} -->
               </dt>
               <dd class="pull-left list-num">x {$goods.goods_number}</dd>
               <dd class="pull-right">{$goods.formated_subtotal}</dd>
