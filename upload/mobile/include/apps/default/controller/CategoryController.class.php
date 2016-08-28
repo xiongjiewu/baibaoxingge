@@ -67,7 +67,15 @@ class CategoryController extends CommonController {
         $this->assign('order', $this->order);
         $this->assign('id', $this->cat_id);
         // 获取分类
-        $this->assign('category', model('CategoryBase')->get_top_category());
+        $category = model('CategoryBase')->get_top_category();
+        foreach($category as &$c) {
+            if ($c['id'] == I('get.id', 0)) {
+                $c['class'] = 'ect-colory';
+            } else {
+                $c['class'] = '';
+            }
+        }
+        $this->assign('category', $category);
         $count = model('Category')->category_get_count($this->children, $this->brand, $this->type, $this->price_min, $this->price_max, $this->ext,$this->keywords);
         $goodslist = $this->category_get_goods();
         $this->assign('goods_list', $goodslist);
@@ -325,7 +333,7 @@ class CategoryController extends CommonController {
 
         foreach ($brands as $key => $val) {
             $temp_key = $key + 1;
-            $brands[$temp_key]['brand_id'] = $val['brand_id']; // 同步绑定品牌名称和品牌ID 
+            $brands[$temp_key]['brand_id'] = $val['brand_id']; // 同步绑定品牌名称和品牌ID
             $brands[$temp_key]['brand_name'] = $val['brand_name'];
             $brands[$temp_key]['url'] = url('category/index', array(
                 'id' => $this->cat_id,
@@ -343,7 +351,7 @@ class CategoryController extends CommonController {
             }
         }
 
-        unset($brands[0]); // 清空索引为0的项目 
+        unset($brands[0]); // 清空索引为0的项目
         $brands[0]['brand_id'] = 0; // 新增默认值
         $brands[0]['brand_name'] = L('all_attribute');
         $brands[0]['url'] = url('category', array(
@@ -399,7 +407,7 @@ class CategoryController extends CommonController {
                         $temp_arrt_url_arr[$key] = $v['goods_id'];
                         $temp_arrt_url = implode('.', $temp_arrt_url_arr);
 
-                        $all_attr_list[$key]['attr_list'][$temp_key]['attr_id'] = $v['goods_id']; // 新增属性参数 
+                        $all_attr_list[$key]['attr_list'][$temp_key]['attr_id'] = $v['goods_id']; // 新增属性参数
                         $all_attr_list[$key]['attr_list'][$temp_key]['attr_value'] = $v['attr_value'];
                         $all_attr_list[$key]['attr_list'][$temp_key]['url'] = url('category/index', array(
                             'id' => $this->cat_id,
@@ -488,7 +496,7 @@ class CategoryController extends CommonController {
      * 获得分类下的商品
      *
      * @access public
-     * @param string $children            
+     * @param string $children
      * @return array
      */
     private function category_get_goods() {
@@ -597,7 +605,7 @@ class CategoryController extends CommonController {
                 $arr[$row['goods_id']]['mysc'] = $rs;
             }
             $arr[$row['goods_id']]['promotion'] = model('GoodsBase')->get_promotion_show($row['goods_id']);
-            $arr[$row['goods_id']]['comment_count'] = model('Comment')->get_goods_comment($row['goods_id'], 0);  //商品总评论数量 
+            $arr[$row['goods_id']]['comment_count'] = model('Comment')->get_goods_comment($row['goods_id'], 0);  //商品总评论数量
             $arr[$row['goods_id']]['favorable_count'] = model('Comment')->favorable_comment($row['goods_id'], 0);  //获得商品好评百分比
         }
         return $arr;
